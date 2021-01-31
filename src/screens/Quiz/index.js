@@ -1,7 +1,5 @@
-/* eslint-disable react/prop-types */
 import React from 'react';
 import { Lottie } from '@crello/react-lottie';
-// import db from '../../../db.json';
 import Widget from '../../components/Widget';
 import QuizLogo from '../../components/QuizLogo';
 import QuizBackground from '../../components/QuizBackground';
@@ -23,20 +21,20 @@ function ResultWidget({ results }) {
         <p>
           Você acertou
           {' '}
-          {/* {results.reduce((somatoriaAtual, resultAtual) => {
+          {results.reduce((somatoriaAtual, resultAtual) => {
             const isAcerto = resultAtual === true;
             if (isAcerto) {
               return somatoriaAtual + 1;
             }
             return somatoriaAtual;
-          }, 0)} */}
+          }, 0)}
           {results.filter((x) => x).length}
           {' '}
           perguntas
         </p>
         <ul>
           {results.map((result, index) => (
-            <li key={`result__${index}`}>
+            <li key={`result__${result}`}>
               #
               {index + 1}
               {' '}
@@ -145,10 +143,6 @@ function QuestionWidget({
               </Widget.Topic>
             );
           })}
-
-          {/* <pre>
-            {JSON.stringify(question, null, 4)}
-          </pre> */}
           <Button type="submit" disabled={!hasAlternativeSelected}>
             Confirmar
           </Button>
@@ -175,23 +169,17 @@ export default function QuizPage({ externalQuestions, externalBg }) {
   const bg = externalBg;
 
   function addResult(result) {
-    // results.push(result);
+    results.push(result);
     setResults([
       ...results,
       result,
     ]);
   }
 
-  // [React chama de: Efeitos || Effects]
-  // React.useEffect
-  // atualizado === willUpdate
-  // morre === willUnmount
   React.useEffect(() => {
-    // fetch() ...
     setTimeout(() => {
       setScreenState(screenStates.QUIZ);
     }, 1 * 2000);
-  // nasce === didMount
   }, []);
 
   function handleSubmitQuiz() {

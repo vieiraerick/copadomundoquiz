@@ -19,6 +19,10 @@ module.exports = {
   ],
   rules: {
     'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx'] }],
-    'import/extensions': ['.js'],
+    'react/jsx-props-no-spreading': [{
+      html: 'ignore',
+      custom: 'ignore',
+      explicitSpread: 'ignore',
+    }],
   },
 };
